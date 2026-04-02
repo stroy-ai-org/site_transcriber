@@ -21,12 +21,12 @@ const features = [
     icon: FileText,
     title: "Транскрипция",
     description:
-      "Отправьте аудио, видео или голосовое сообщение — бот распознает речь и вернёт полный текст в формате .txt файла.",
+      "Отправьте аудио, видео или голосовое сообщение — бот распознает речь и вернёт полный текст с таймкодами и спикерами.",
     details: [
       "Поддержка форматов: MP3, WAV, OGG, MP4, WEBM, M4A",
       "Распознавание русской речи с высокой точностью",
       "Обработка файлов до 2 часов",
-      "Результат отправляется текстовым файлом",
+      "Экспорт в DOCX и PDF",
     ],
     color: "blue",
   },
@@ -45,16 +45,16 @@ const features = [
     color: "violet",
   },
   {
-    id: "tasks",
+    id: "analysis",
     icon: ListChecks,
-    title: "Итоги и задачи",
+    title: "Глубокий анализ",
     description:
-      "Бот может выделить из совещания конкретные задачи, ответственных и дедлайны — готовый протокол совещания.",
+      "ИИ проводит детальный разбор совещания и формирует структурированный PDF-отчёт с задачами, решениями и рекомендациями.",
     details: [
-      "Список задач с ответственными",
-      "Выделение дедлайнов и сроков",
-      "Фиксация принятых решений",
-      "Формат, готовый для трекера задач",
+      "Выделение задач и ответственных",
+      "Ключевые решения и договорённости",
+      "Рекомендации и следующие шаги",
+      "Готовый PDF-отчёт для рассылки",
     ],
     color: "emerald",
   },
@@ -77,12 +77,12 @@ const features = [
     icon: Download,
     title: "Гибкий вывод",
     description:
-      "Результат транскрипции можно получить в разных форматах — текстовый файл, сообщение в чат или структурированный отчёт.",
+      "Результат транскрипции можно получить в разных форматах — DOCX для редактирования или PDF с оформлением.",
     details: [
-      "Текстовый файл .txt",
-      "Сообщение прямо в чат",
-      "Структурированный протокол",
-      "Копирование в один клик",
+      "DOCX — редактируемый документ",
+      "PDF — со спикерами, таймкодами, статистикой",
+      "Глубокий анализ — структурированный PDF-отчёт",
+      "Саммари — краткое содержание встречи",
     ],
     color: "teal",
   },
@@ -167,7 +167,7 @@ export default function FeaturesPage() {
                           <div className="flex items-center gap-3 bg-emerald-50 rounded-xl p-3 border border-emerald-200">
                             <FileText className="w-5 h-5 text-emerald-500" />
                             <div className="flex-1">
-                              <div className="text-xs font-medium text-emerald-700">transcription.txt</div>
+                              <div className="text-xs font-medium text-emerald-700">transcription.docx</div>
                               <div className="text-xs text-emerald-600">3 240 слов</div>
                             </div>
                           </div>
@@ -190,33 +190,20 @@ export default function FeaturesPage() {
                         </div>
                       )}
 
-                      {feature.id === "tasks" && (
+                      {feature.id === "analysis" && (
                         <div className="bg-white rounded-xl p-4 border border-slate-200 text-xs space-y-2">
-                          <div className="font-semibold text-sm mb-3">✅ Задачи</div>
-                          <div className="space-y-2">
-                            <div className="flex items-start gap-2">
-                              <div className="w-4 h-4 rounded border-2 border-emerald-400 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <div className="w-2 h-2 bg-emerald-400 rounded-sm" />
-                              </div>
-                              <div>
-                                <div className="font-medium">Подготовить презентацию</div>
-                                <div className="text-[#999]">Иванов А. · до 05.04</div>
-                              </div>
-                            </div>
-                            <div className="flex items-start gap-2">
-                              <div className="w-4 h-4 rounded border-2 border-slate-300 flex-shrink-0 mt-0.5" />
-                              <div>
-                                <div className="font-medium">Интеграция с CRM</div>
-                                <div className="text-[#999]">Петров Б. · до 08.04</div>
-                              </div>
-                            </div>
-                            <div className="flex items-start gap-2">
-                              <div className="w-4 h-4 rounded border-2 border-slate-300 flex-shrink-0 mt-0.5" />
-                              <div>
-                                <div className="font-medium">Ревью лендинга</div>
-                                <div className="text-[#999]">Сидоров В. · до 10.04</div>
-                              </div>
-                            </div>
+                          <div className="font-semibold text-sm mb-3">📊 Анализ встречи.pdf</div>
+                          <div className="space-y-2 text-[#555]">
+                            <div className="font-medium text-[#333]">Задачи:</div>
+                            <p>• Подготовить презентацию — Иванов А.</p>
+                            <p>• Интеграция с CRM — Петров Б.</p>
+                            <div className="h-px bg-slate-100 my-2" />
+                            <div className="font-medium text-[#333]">Решения:</div>
+                            <p>• Дедлайн запуска — 15 апреля</p>
+                            <p>• Бюджет на маркетинг утверждён</p>
+                            <div className="h-px bg-slate-100 my-2" />
+                            <div className="font-medium text-[#333]">Рекомендации:</div>
+                            <p>• Провести ревью лендинга до 10.04</p>
                           </div>
                         </div>
                       )}
@@ -242,18 +229,18 @@ export default function FeaturesPage() {
                       {feature.id === "formats" && (
                         <div className="space-y-3">
                           <div className="flex items-center gap-3 bg-white rounded-xl p-3 border border-slate-200">
-                            <FileText className="w-5 h-5 text-slate-500" />
-                            <div className="flex-1 text-sm font-medium">Файл .txt</div>
+                            <FileText className="w-5 h-5 text-blue-500" />
+                            <div className="flex-1 text-sm font-medium">DOCX</div>
                             <Download className="w-4 h-4 text-[#999]" />
                           </div>
                           <div className="flex items-center gap-3 bg-white rounded-xl p-3 border border-slate-200">
-                            <MessageSquare className="w-5 h-5 text-slate-500" />
-                            <div className="flex-1 text-sm font-medium">Сообщение в чат</div>
-                            <Clock className="w-4 h-4 text-[#999]" />
+                            <FileText className="w-5 h-5 text-rose-500" />
+                            <div className="flex-1 text-sm font-medium">PDF со спикерами</div>
+                            <Download className="w-4 h-4 text-[#999]" />
                           </div>
                           <div className="flex items-center gap-3 bg-white rounded-xl p-3 border border-slate-200">
-                            <ListChecks className="w-5 h-5 text-slate-500" />
-                            <div className="flex-1 text-sm font-medium">Протокол</div>
+                            <ListChecks className="w-5 h-5 text-emerald-500" />
+                            <div className="flex-1 text-sm font-medium">PDF-анализ</div>
                             <Download className="w-4 h-4 text-[#999]" />
                           </div>
                         </div>
