@@ -41,9 +41,14 @@ export function Navbar() {
           ))}
         </nav>
 
-        <span className="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-[#1a1a1a]/50 text-white text-sm font-medium rounded-lg cursor-default">
-          Скоро в Max
-        </span>
+        <a
+          href="https://max.ru/id9707055530_bot"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-[#1a1a1a] text-white text-sm font-medium rounded-lg hover:bg-[#333] transition-colors"
+        >
+          Открыть бота
+        </a>
 
         {/* Mobile burger */}
         <button

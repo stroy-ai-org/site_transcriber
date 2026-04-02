@@ -107,7 +107,9 @@ export default function PricingPage() {
               </ul>
 
               <a
-                href="#"
+                href="https://max.ru/id9707055530_bot"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`flex items-center justify-center gap-2 w-full py-3 text-sm font-medium rounded-xl transition-colors ${
                   plan.highlighted
                     ? "bg-[#1a1a1a] text-white hover:bg-[#333]"

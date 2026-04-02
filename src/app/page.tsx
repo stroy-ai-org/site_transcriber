@@ -55,10 +55,12 @@ export default function HomePage() {
           <HeroItem delay={0.7}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
               <a
-                href="#"
+                href="https://max.ru/id9707055530_bot"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#1a1a1a] text-white font-medium rounded-xl hover:bg-[#333] transition-colors"
               >
-                Скоро в Max
+                Открыть бота
                 <ArrowRight className="w-4 h-4" />
               </a>
               <Link
@@ -247,10 +249,12 @@ export default function HomePage() {
                 Отправьте первое голосовое сообщение боту и получите транскрипцию бесплатно.
               </p>
               <a
-                href="#"
+                href="https://max.ru/id9707055530_bot"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-[#1a1a1a] font-medium rounded-xl hover:bg-white/90 transition-colors"
               >
-                Скоро в Max
+                Открыть бота
                 <ArrowRight className="w-4 h-4" />
               </a>
 
