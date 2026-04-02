@@ -5,49 +5,54 @@ import { Reveal, RevealStagger } from "@/components/Reveal";
 
 const plans = [
   {
-    name: "Старт",
-    description: "Для личного использования",
-    price: "Бесплатно",
+    name: "Free",
+    description: "Попробовать бесплатно",
+    price: "0 ₽",
     period: "",
     features: [
-      "5 транскрипций в месяц",
-      "Файлы до 15 минут",
-      "Саммари встреч",
-      "Формат .txt",
+      "3 транскрипции в месяц",
+      "Экспорт в PDF",
+      "Таймкоды и определение спикеров",
     ],
     cta: "Начать бесплатно",
     highlighted: false,
   },
   {
-    name: "Про",
-    description: "Для команд и активных пользователей",
-    price: "990 ₽",
+    name: "Standard",
+    description: "Для регулярного использования",
+    price: "499 ₽",
     period: "/ месяц",
     features: [
-      "Безлимитные транскрипции",
-      "Файлы до 2 часов",
-      "Саммари и итоги с задачами",
-      "Разделение спикеров",
-      "Приоритетная обработка",
+      "25 транскрипций в месяц",
+      "Экспорт в PDF и DOCX",
+      "Саммари встреч",
+      "Глубокий анализ с задачами",
+      "Покупка доп. пакетов",
+    ],
+    cta: "Подключить",
+    highlighted: false,
+  },
+  {
+    name: "Pro",
+    description: "Для команд и активных пользователей",
+    price: "999 ₽",
+    period: "/ месяц",
+    features: [
+      "75 транскрипций в месяц",
+      "Экспорт в PDF и DOCX",
+      "Саммари встреч",
+      "Глубокий анализ с задачами",
+      "Покупка доп. пакетов",
     ],
     cta: "Подключить",
     highlighted: true,
   },
-  {
-    name: "Бизнес",
-    description: "Для компаний",
-    price: "По запросу",
-    period: "",
-    features: [
-      "Всё из тарифа Про",
-      "Выделенный инстанс",
-      "Интеграция с корпоративными системами",
-      "SLA и техподдержка",
-      "Кастомизация под задачи",
-    ],
-    cta: "Связаться",
-    highlighted: false,
-  },
+];
+
+const addons = [
+  { size: 5, price: "149 ₽" },
+  { size: 10, price: "249 ₽" },
+  { size: 20, price: "399 ₽" },
 ];
 
 export default function PricingPage() {
@@ -122,6 +127,27 @@ export default function PricingPage() {
             </div>
           ))}
         </RevealStagger>
+
+        {/* Addons */}
+        <Reveal className="max-w-3xl mx-auto mt-16">
+          <div className="bg-white border border-slate-200 rounded-2xl p-8">
+            <h3 className="text-lg font-semibold mb-2">Дополнительные пакеты</h3>
+            <p className="text-sm text-[#888] mb-6">
+              Для тарифов Standard и Pro — если лимит закончился
+            </p>
+            <div className="grid sm:grid-cols-3 gap-4">
+              {addons.map((addon) => (
+                <div
+                  key={addon.size}
+                  className="flex items-center justify-between border border-slate-200 rounded-xl px-5 py-4"
+                >
+                  <span className="text-sm font-medium">{addon.size} транскрипций</span>
+                  <span className="text-sm font-semibold text-[#1a1a1a]">{addon.price}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </div>
     </div>
   );
