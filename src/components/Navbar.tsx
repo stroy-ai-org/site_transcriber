@@ -20,7 +20,8 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-[#F6F2ED]/80 backdrop-blur-xl border-b border-[#1a1a1a]/5">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2.5">
+          <img src="/logo.svg" alt="Транскрибатор" width={28} height={28} />
           <span className="text-xl font-bold tracking-tight">Транскрибатор</span>
         </Link>
 
