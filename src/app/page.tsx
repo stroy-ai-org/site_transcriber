@@ -38,7 +38,7 @@ export default function HomePage() {
 
           <HeroItem delay={0.3}>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-              Расшифровка совещаний{" "}
+              Транскрибация аудио{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">
                 в текст
               </span>
@@ -47,8 +47,8 @@ export default function HomePage() {
 
           <HeroItem delay={0.5}>
             <p className="text-lg sm:text-xl text-[#666] max-w-2xl mx-auto mb-10 leading-relaxed">
-              Отправьте аудио, видео или голосовое сообщение в бота — получите
-              текстовую транскрипцию, саммари встречи и список задач за секунды.
+              Отправьте аудио или видео совещания в бота — получите
+              транскрибацию, саммари встречи и протокол с задачами за секунды.
             </p>
           </HeroItem>
 
