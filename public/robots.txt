@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://transcribe-ai.ru/sitemap.xml
+
+Host: transcribe-ai.ru

@@ -16,8 +16,24 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Транскрибатор — Бот для транскрипции совещаний",
-  description: "Бот для транскрипции аудио, видео и голосовых сообщений в Max. Саммари встреч и итоги совещаний.",
+  title: "Транскрибатор — расшифровка совещаний в текст | AI-бот в Max",
+  description: "AI-бот для транскрибации аудио и видео в текст. Расшифровка совещаний, стенограмма встреч, саммари и протоколы — в мессенджере Max. Распознавание речи с таймкодами и спикерами.",
+  keywords: "транскрибация, расшифровка аудио, расшифровка совещаний, AI транскрибатор, стенограмма совещания, перевод голоса в текст, протокол совещания, распознавание речи, саммари встречи, бот для расшифровки",
+  openGraph: {
+    title: "Транскрибатор — расшифровка совещаний в текст",
+    description: "AI-бот для транскрибации аудио и видео в текст. Саммари, протоколы и глубокий анализ встреч в мессенджере Max.",
+    url: "https://transcribe-ai.ru",
+    siteName: "Транскрибатор",
+    locale: "ru_RU",
+    type: "website",
+  },
+  alternates: {
+    canonical: "https://transcribe-ai.ru",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -28,6 +44,48 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "Транскрибатор",
+              applicationCategory: "BusinessApplication",
+              operatingSystem: "Web",
+              description: "AI-бот для транскрибации аудио и видео в текст. Расшифровка совещаний, саммари и протоколы в мессенджере Max.",
+              url: "https://transcribe-ai.ru",
+              offers: [
+                {
+                  "@type": "Offer",
+                  name: "Free",
+                  price: "0",
+                  priceCurrency: "RUB",
+                  description: "3 транскрипции в месяц",
+                },
+                {
+                  "@type": "Offer",
+                  name: "Standard",
+                  price: "499",
+                  priceCurrency: "RUB",
+                  description: "25 транскрипций в месяц, DOCX, саммари, анализ",
+                },
+                {
+                  "@type": "Offer",
+                  name: "Pro",
+                  price: "999",
+                  priceCurrency: "RUB",
+                  description: "75 транскрипций в месяц, DOCX, саммари, анализ",
+                },
+              ],
+              provider: {
+                "@type": "Organization",
+                name: "ООО «Реактми»",
+                url: "https://transcribe-ai.ru",
+              },
+            }),
+          }}
+        />
         <noscript>
           <div>
             <img src="https://mc.yandex.ru/watch/108415216" style={{ position: "absolute", left: "-9999px" }} alt="" />

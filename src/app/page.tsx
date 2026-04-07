@@ -38,7 +38,7 @@ export default function HomePage() {
 
           <HeroItem delay={0.3}>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-              Совещания —{" "}
+              Расшифровка совещаний{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">
                 в текст
               </span>
@@ -231,6 +231,44 @@ export default function HomePage() {
                 className="bg-white border border-slate-200 rounded-xl p-4 text-center hover:shadow-md transition-shadow"
               >
                 <span className="text-sm font-mono font-semibold text-[#555]">.{fmt.toLowerCase()}</span>
+              </div>
+            ))}
+          </RevealStagger>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-24 bg-white/40">
+        <div className="max-w-3xl mx-auto px-6 lg:px-8">
+          <Reveal className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Частые вопросы</h2>
+          </Reveal>
+
+          <RevealStagger className="space-y-4" stagger={0.1}>
+            {[
+              {
+                q: "Как работает транскрибация аудио в текст?",
+                a: "Вы отправляете аудио, видео или голосовое сообщение боту в мессенджере Max. ИИ на базе Whisper распознаёт речь, определяет спикеров, расставляет таймкоды и возвращает готовый текст в формате DOCX или PDF.",
+              },
+              {
+                q: "Какие форматы файлов поддерживаются?",
+                a: "MP3, WAV, OGG, MP4, WEBM, M4A, FLAC, AAC, OPUS, AVI, MKV, MOV и другие популярные аудио- и видеоформаты.",
+              },
+              {
+                q: "Что такое глубокий анализ совещания?",
+                a: "ИИ формирует структурированный PDF-отчёт: задачи с ответственными, принятые решения, ключевые темы и рекомендации. Готовый протокол совещания за минуту.",
+              },
+              {
+                q: "Можно ли попробовать бесплатно?",
+                a: "Да, тариф Free даёт 3 транскрипции в месяц с экспортом в PDF. Для саммари, глубокого анализа и DOCX доступны тарифы Standard и Pro.",
+              },
+            ].map((item) => (
+              <div
+                key={item.q}
+                className="bg-white border border-slate-200 rounded-2xl p-6"
+              >
+                <h3 className="font-semibold text-[#1a1a1a] mb-2">{item.q}</h3>
+                <p className="text-sm text-[#666] leading-relaxed">{item.a}</p>
               </div>
             ))}
           </RevealStagger>
