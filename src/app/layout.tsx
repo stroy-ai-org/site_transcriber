@@ -4,6 +4,8 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { JsonLd } from "@/components/JsonLd";
+import { organizationJsonLd } from "@/lib/seo-data";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -90,6 +92,7 @@ export default function RootLayout({
             }),
           }}
         />
+        <JsonLd data={organizationJsonLd()} />
         <noscript>
           <div>
             <img src="https://mc.yandex.ru/watch/108415216" style={{ position: "absolute", left: "-9999px" }} alt="" />

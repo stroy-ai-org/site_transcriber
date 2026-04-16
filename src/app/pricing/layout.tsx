@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd, SITE_URL } from "@/lib/seo-data";
 
 export const metadata: Metadata = {
   title: "Тарифы — Транскрибатор | От 0 ₽, подписки и пакеты транскрипций",
@@ -9,5 +11,15 @@ export const metadata: Metadata = {
 };
 
 export default function PricingLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Главная", url: SITE_URL },
+          { name: "Тарифы", url: `${SITE_URL}/pricing` },
+        ])}
+      />
+      {children}
+    </>
+  );
 }

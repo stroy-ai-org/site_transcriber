@@ -7,6 +7,8 @@ import { BotMockup } from "@/components/widgets/BotMockup";
 import { FlowDiagram } from "@/components/widgets/FlowDiagram";
 import { Reveal, RevealStagger } from "@/components/Reveal";
 import { BotCta } from "@/components/BotCta";
+import { JsonLd } from "@/components/JsonLd";
+import { FAQ_ITEMS, faqJsonLd, howToJsonLd } from "@/lib/seo-data";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
@@ -26,6 +28,8 @@ function HeroItem({ children, delay, className }: { children: React.ReactNode; d
 export default function HomePage() {
   return (
     <div>
+      <JsonLd data={faqJsonLd()} />
+      <JsonLd data={howToJsonLd()} />
       {/* HERO */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-radial from-blue-50/40 via-transparent to-transparent" />
@@ -238,32 +242,7 @@ export default function HomePage() {
           </Reveal>
 
           <RevealStagger className="space-y-4" stagger={0.1}>
-            {[
-              {
-                q: "Как работает транскрибация аудио в текст?",
-                a: "Вы отправляете аудио, видео или голосовое сообщение боту в Max или Telegram. ИИ на базе Whisper распознаёт речь, расставляет таймкоды и возвращает готовый текст в формате DOCX или PDF.",
-              },
-              {
-                q: "В каких мессенджерах доступен бот?",
-                a: "Сейчас бот работает в Max и Telegram. Функциональность одинаковая в обоих — отличий в возможностях нет.",
-              },
-              {
-                q: "Переносится ли подписка между Max и Telegram?",
-                a: "Нет, подписки независимые. Если вы оплатили подписку в Max, в Telegram у вас будет отдельный бесплатный лимит — и наоборот. Это два разных аккаунта.",
-              },
-              {
-                q: "Какие форматы файлов поддерживаются?",
-                a: "MP3, WAV, OGG, MP4, WEBM, M4A, FLAC, AAC, OPUS, AVI, MKV, MOV и другие популярные аудио- и видеоформаты.",
-              },
-              {
-                q: "Что такое глубокий анализ совещания?",
-                a: "ИИ формирует структурированный PDF-отчёт: задачи с ответственными, принятые решения, ключевые темы и рекомендации. Готовый протокол совещания за минуту.",
-              },
-              {
-                q: "Можно ли попробовать бесплатно?",
-                a: "Да, тариф Free даёт 3 транскрипции в месяц с экспортом в PDF. Для саммари, глубокого анализа и DOCX доступны тарифы Standard и Pro.",
-              },
-            ].map((item) => (
+            {FAQ_ITEMS.map((item) => (
               <div
                 key={item.q}
                 className="bg-white border border-slate-200 rounded-2xl p-6"

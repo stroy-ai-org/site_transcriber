@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd, SITE_URL } from "@/lib/seo-data";
 
 export const metadata: Metadata = {
   title: "Контакты — Транскрибатор | ООО «Реактми»",
@@ -9,5 +11,15 @@ export const metadata: Metadata = {
 };
 
 export default function ContactLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Главная", url: SITE_URL },
+          { name: "Контакты", url: `${SITE_URL}/contact` },
+        ])}
+      />
+      {children}
+    </>
+  );
 }

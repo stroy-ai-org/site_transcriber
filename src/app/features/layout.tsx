@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd, SITE_URL } from "@/lib/seo-data";
 
 export const metadata: Metadata = {
   title: "Возможности — Транскрибатор | Расшифровка аудио, саммари, глубокий анализ",
@@ -9,5 +11,15 @@ export const metadata: Metadata = {
 };
 
 export default function FeaturesLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Главная", url: SITE_URL },
+          { name: "Возможности", url: `${SITE_URL}/features` },
+        ])}
+      />
+      {children}
+    </>
+  );
 }
