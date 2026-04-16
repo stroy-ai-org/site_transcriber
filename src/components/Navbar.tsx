@@ -1,21 +1,35 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { MAX_BOT_URL, TG_BOT_URL } from "@/lib/bot-links";
+import { MaxIcon, TelegramIcon } from "./MessengerIcons";
 
 const links = [
   { href: "/", label: "Главная" },
   { href: "/features", label: "Возможности" },
   { href: "/pricing", label: "Тарифы" },
-  { href: "/contact", label: "Контакты" },
 ];
 
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [botOpen, setBotOpen] = useState(false);
+  const botRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!botOpen) return;
+    function onClick(e: MouseEvent) {
+      if (botRef.current && !botRef.current.contains(e.target as Node)) {
+        setBotOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
+  }, [botOpen]);
 
   return (
     <header className="sticky top-0 z-50 bg-[#F6F2ED]/80 backdrop-blur-xl border-b border-[#1a1a1a]/5">
@@ -42,14 +56,52 @@ export function Navbar() {
           ))}
         </nav>
 
-        <a
-          href="https://max.ru/id9707055530_bot"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-[#1a1a1a] text-white text-sm font-medium rounded-lg hover:bg-[#333] transition-colors"
-        >
-          Открыть бота
-        </a>
+        {/* Desktop: bot dropdown */}
+        <div ref={botRef} className="hidden sm:flex relative">
+          <button
+            type="button"
+            onClick={() => setBotOpen((v) => !v)}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#1a1a1a] text-white text-sm font-medium rounded-lg hover:bg-[#333] transition-colors"
+          >
+            Открыть бота
+            <ChevronDown
+              className={`w-4 h-4 transition-transform ${botOpen ? "rotate-180" : ""}`}
+            />
+          </button>
+
+          <AnimatePresence>
+            {botOpen && (
+              <motion.div
+                className="absolute right-0 top-full mt-2 w-56 bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden"
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.15 }}
+              >
+                <a
+                  href={MAX_BOT_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setBotOpen(false)}
+                  className="flex items-center gap-3 px-4 py-3 text-sm text-[#1a1a1a] hover:bg-slate-50 transition-colors"
+                >
+                  <MaxIcon className="w-5 h-5" />
+                  Открыть в Max
+                </a>
+                <a
+                  href={TG_BOT_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setBotOpen(false)}
+                  className="flex items-center gap-3 px-4 py-3 text-sm text-[#1a1a1a] border-t border-slate-100 hover:bg-slate-50 transition-colors"
+                >
+                  <TelegramIcon className="w-5 h-5 text-[#229ED9]" />
+                  Открыть в Telegram
+                </a>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
 
         {/* Mobile burger */}
         <button
@@ -86,6 +138,28 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
+              <div className="pt-3 mt-3 border-t border-[#1a1a1a]/5 space-y-2">
+                <a
+                  href={MAX_BOT_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-3 px-3 py-2.5 bg-[#1a1a1a] text-white text-sm font-medium rounded-lg"
+                >
+                  <MaxIcon className="w-5 h-5" />
+                  Открыть в Max
+                </a>
+                <a
+                  href={TG_BOT_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-3 px-3 py-2.5 bg-white text-[#1a1a1a] text-sm font-medium rounded-lg border border-slate-200"
+                >
+                  <TelegramIcon className="w-5 h-5 text-[#229ED9]" />
+                  Открыть в Telegram
+                </a>
+              </div>
             </div>
           </motion.nav>
         )}

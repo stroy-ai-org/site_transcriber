@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Mic, Zap, Shield, FileText, Clock, Brain, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Mic, Zap, Shield, FileText, Clock, Brain, CheckCircle2 } from "lucide-react";
 import { BotMockup } from "@/components/widgets/BotMockup";
 import { FlowDiagram } from "@/components/widgets/FlowDiagram";
 import { Reveal, RevealStagger } from "@/components/Reveal";
+import { BotCta } from "@/components/BotCta";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
@@ -32,7 +33,7 @@ export default function HomePage() {
           <HeroItem delay={0.1}>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/60 backdrop-blur border border-slate-200 rounded-full text-xs font-medium text-[#555] mb-8">
               <Mic className="w-3.5 h-3.5 text-blue-500" />
-              Бот для транскрипции в Max
+              Бот в Max и Telegram
             </div>
           </HeroItem>
 
@@ -53,21 +54,13 @@ export default function HomePage() {
           </HeroItem>
 
           <HeroItem delay={0.7}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
-              <a
-                href="https://max.ru/id9707055530_bot"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#1a1a1a] text-white font-medium rounded-xl hover:bg-[#333] transition-colors"
-              >
-                Открыть бота
-                <ArrowRight className="w-4 h-4" />
-              </a>
+            <div className="flex flex-col items-center gap-4 mb-20">
+              <BotCta variant="hero" />
               <Link
                 href="/features"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-[#1a1a1a]/20 text-[#1a1a1a] font-medium rounded-xl hover:bg-white/50 transition-colors"
+                className="text-sm text-[#666] hover:text-[#1a1a1a] underline underline-offset-4 decoration-[#1a1a1a]/20 hover:decoration-[#1a1a1a]/50 transition-colors"
               >
-                Возможности
+                Посмотреть возможности
               </Link>
             </div>
           </HeroItem>
@@ -248,7 +241,15 @@ export default function HomePage() {
             {[
               {
                 q: "Как работает транскрибация аудио в текст?",
-                a: "Вы отправляете аудио, видео или голосовое сообщение боту в мессенджере Max. ИИ на базе Whisper распознаёт речь, определяет спикеров, расставляет таймкоды и возвращает готовый текст в формате DOCX или PDF.",
+                a: "Вы отправляете аудио, видео или голосовое сообщение боту в Max или Telegram. ИИ на базе Whisper распознаёт речь, расставляет таймкоды и возвращает готовый текст в формате DOCX или PDF.",
+              },
+              {
+                q: "В каких мессенджерах доступен бот?",
+                a: "Сейчас бот работает в Max и Telegram. Функциональность одинаковая в обоих — отличий в возможностях нет.",
+              },
+              {
+                q: "Переносится ли подписка между Max и Telegram?",
+                a: "Нет, подписки независимые. Если вы оплатили подписку в Max, в Telegram у вас будет отдельный бесплатный лимит — и наоборот. Это два разных аккаунта.",
               },
               {
                 q: "Какие форматы файлов поддерживаются?",
@@ -286,15 +287,7 @@ export default function HomePage() {
               <p className="text-white/60 max-w-lg mx-auto mb-8">
                 Отправьте первое голосовое сообщение боту и получите транскрипцию бесплатно.
               </p>
-              <a
-                href="https://max.ru/id9707055530_bot"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-[#1a1a1a] font-medium rounded-xl hover:bg-white/90 transition-colors"
-              >
-                Открыть бота
-                <ArrowRight className="w-4 h-4" />
-              </a>
+              <BotCta variant="dark" />
 
               <div className="flex flex-wrap justify-center gap-8 mt-10 text-sm text-white/40">
                 <div className="flex items-center gap-2">

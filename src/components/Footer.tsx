@@ -12,7 +12,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm text-zinc-600 leading-relaxed mb-6 max-w-xs">
-              Бот для транскрипции совещаний в Max. Аудио, видео, голосовые — в текст за секунды.
+              Бот для транскрипции совещаний в Max и Telegram. Аудио, видео, голосовые — в текст за секунды.
             </p>
             <p className="text-xs text-zinc-400">
               © 2026 Реактми. Все права защищены.

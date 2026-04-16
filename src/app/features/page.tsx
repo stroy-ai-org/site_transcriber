@@ -102,7 +102,7 @@ export default function FeaturesPage() {
             Что умеет Транскрибатор
           </h1>
           <p className="text-lg text-[#666] max-w-2xl mx-auto">
-            От распознавания речи до готового протокола совещания — всё в одном боте в Max
+            От распознавания речи до готового протокола совещания — в боте в Max и Telegram
           </p>
         </Reveal>
 

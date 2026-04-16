@@ -1,7 +1,8 @@
 "use client";
 
-import { Check, ArrowRight } from "lucide-react";
+import { Check } from "lucide-react";
 import { Reveal, RevealStagger } from "@/components/Reveal";
+import { BotCta } from "@/components/BotCta";
 
 const plans = [
   {
@@ -14,13 +15,12 @@ const plans = [
       "Экспорт в PDF",
       "Таймкоды и определение спикеров",
     ],
-    cta: "Начать бесплатно",
     highlighted: false,
   },
   {
     name: "Standard",
     description: "Для регулярного использования",
-    price: "499 ₽",
+    price: "990 ₽",
     period: "/ месяц",
     features: [
       "25 транскрипций в месяц",
@@ -29,13 +29,12 @@ const plans = [
       "Глубокий анализ с задачами",
       "Покупка доп. пакетов",
     ],
-    cta: "Подключить",
     highlighted: false,
   },
   {
     name: "Pro",
     description: "Для команд и активных пользователей",
-    price: "999 ₽",
+    price: "2 490 ₽",
     period: "/ месяц",
     features: [
       "75 транскрипций в месяц",
@@ -44,15 +43,14 @@ const plans = [
       "Глубокий анализ с задачами",
       "Покупка доп. пакетов",
     ],
-    cta: "Подключить",
     highlighted: true,
   },
 ];
 
 const addons = [
-  { size: 5, price: "149 ₽" },
-  { size: 10, price: "249 ₽" },
-  { size: 20, price: "399 ₽" },
+  { size: 5, price: "249 ₽" },
+  { size: 10, price: "449 ₽" },
+  { size: 20, price: "799 ₽" },
 ];
 
 export default function PricingPage() {
@@ -65,7 +63,7 @@ export default function PricingPage() {
             Тарифы
           </h1>
           <p className="text-lg text-[#666] max-w-2xl mx-auto">
-            Выберите подходящий тариф для ваших задач
+            Доступны в мессенджерах Max и Telegram — подписка и пакеты покупаются внутри бота
           </p>
         </Reveal>
 
@@ -102,7 +100,7 @@ export default function PricingPage() {
                 )}
               </div>
 
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2.5 text-sm text-[#555]">
                     <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
@@ -110,20 +108,6 @@ export default function PricingPage() {
                   </li>
                 ))}
               </ul>
-
-              <a
-                href="https://max.ru/id9707055530_bot"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`flex items-center justify-center gap-2 w-full py-3 text-sm font-medium rounded-xl transition-colors ${
-                  plan.highlighted
-                    ? "bg-[#1a1a1a] text-white hover:bg-[#333]"
-                    : "border border-[#1a1a1a]/20 text-[#1a1a1a] hover:bg-slate-50"
-                }`}
-              >
-                {plan.cta}
-                <ArrowRight className="w-4 h-4" />
-              </a>
             </div>
           ))}
         </RevealStagger>
@@ -147,6 +131,15 @@ export default function PricingPage() {
               ))}
             </div>
           </div>
+        </Reveal>
+
+        {/* CTA */}
+        <Reveal className="max-w-3xl mx-auto mt-16 text-center">
+          <h3 className="text-2xl font-semibold mb-3">Готовы начать?</h3>
+          <p className="text-[#666] mb-8">
+            Подписка независимая для каждого мессенджера — выберите, где удобнее
+          </p>
+          <BotCta variant="hero" />
         </Reveal>
       </div>
     </div>
